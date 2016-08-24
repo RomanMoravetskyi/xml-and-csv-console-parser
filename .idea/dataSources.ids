@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - tutors@localhost" uuid="126c0366-1042-454a-abc2-e0487c5c76be">
+    <database-info product="MySQL" version="5.7.13-0ubuntu0.16.04.2" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="tutors">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="information_schema"/>
+      <schema id="3" name="mysql"/>
+      <schema id="4" name="parts"/>
+      <schema id="5" name="performance_schema"/>
+      <schema id="6" name="sys"/>
+      <table id="7" parent="1" name="course"/>
+      <column id="8" parent="7" name="course_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="9" parent="7" name="name">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="10" parent="7" name="country">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="11" parent="7" name="email">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="12" parent="7" name="phone">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <key id="13" parent="7" name="PRIMARY">
+        <columns>course_id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

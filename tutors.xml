@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<tutors>
+    <course>
+        <name>Android11</name>
+        <country>India</country>
+        <email>contact@tutorialspoint.com</email>
+        <phone>123456789</phone>
+    </course>
+
+    <course>
+        <name>Java</name>
+        <country>India</country>
+        <email>contact@tutorialspoint.com</email>
+        <phone>123456789</phone>
+    </course>
+
+    <course>
+        <name>HTML</name>
+        <country>India</country>
+        <email>contact@tutorialspoint.com</email>
+        <phone>123456789</phone>
+    </course>
+
+    <course>
+        <name>Css</name>
+        <country>China</country>
+        <email>contact1@tutorialspoint.com</email>
+        <phone>1234567879</phone>
+    </course>
+</tutors>
