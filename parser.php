@@ -2,13 +2,12 @@
 <?php
 require_once "DAO/courseDAO.php";
 require_once "parserXml.php";
-
-
-$saxParser = new saxParser();
-$data = $saxParser->parsingXml();
+require_once "csvReader.php";
 
 $courseDAO = new courseDAO();
-$courseDAO->saveCourse($data);
+
+$saxParser = new saxParser($courseDAO);
+$data = $saxParser->parsingXml();
 
 ?>
 

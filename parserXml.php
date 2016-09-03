@@ -8,8 +8,18 @@
 
 class saxParser
 {
+    const fieldsCount = 4;
+
     private $tutors   = array();
+    private $tutorsCounter = 0;
     private $elements = null;
+    private $saveCounter = 0;
+    private $dao;
+
+    function __construct($dao)
+    {
+        $this->dao = $dao;
+    }
 
     /**
      * Purpose: Called to this function when tags are opened
@@ -23,7 +33,7 @@ class saxParser
         if(!empty($name)) {
             if ($name == 'COURSE') {
                 // creating an array to store information
-                $this->tutors []= array();
+                $this->tutors[] = array();
             }
             $this->elements = $name;
         }
@@ -50,11 +60,38 @@ class saxParser
     {
         if(!empty($data)) {
             $isDataTag = in_array($this->elements, ['NAME', 'COUNTRY', 'EMAIL', 'PHONE']);
-
             if ($isDataTag) {
-                $this->tutors[count($this->tutors)-1][$this->elements] = trim($data);
+                $this->tutors[$this->tutorsCounter][$this->elements] = trim($data);
+                $this->saveCounter++;
+            }
+
+            if(count($this->tutors[$this->tutorsCounter]) == self::fieldsCount) {
+                $this->tutorsCounter++;
             }
         }
+    }
+
+    private function saveData()
+    {
+        $countElementToSave = floor($this->saveCounter/self::fieldsCount); // 4 because count of fields
+        $this->saveCounter -= self::fieldsCount * $countElementToSave;
+        if($this->saveCounter < 0) {
+            throw new RuntimeException('Please check if data is correct in xml file.');
+        }
+
+        $data = [];
+        foreach($this->tutors as $key => $value) {
+            if($countElementToSave == 0) {
+                break;
+            }
+
+            $data[] = $value;
+            $countElementToSave -= 1;
+
+            unset($this->tutors[$key]);
+        }
+
+       $this->dao->saveCourse($data);
     }
 
     public function parsingXml()
@@ -71,6 +108,7 @@ class saxParser
 
         while($data = fread($handle, 4096)) { // read xml file
             xml_parse($parser, $data);  // start parsing an xml document
+            $this->saveData();
         }
 
         xml_parser_free($parser); // deletes the parser

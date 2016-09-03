@@ -16,7 +16,7 @@
 
     <course>
         <name>HTML</name>
-        <country>India</country>
+        <country>Indiax</country>
         <email>contact@tutorialspoint.com</email>
         <phone>123456789</phone>
     </course>
@@ -26,5 +26,12 @@
         <country>China</country>
         <email>contact1@tutorialspoint.com</email>
         <phone>1234567879</phone>
+    </course>
+
+    <course>
+        <name>PHP1</name>
+        <country>Ukraine1</country>
+        <email>c2ontact1@cool.com</email>
+        <phone>3987745612</phone>
     </course>
 </tutors>
