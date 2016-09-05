@@ -31,7 +31,7 @@ class courseDAO extends baseDAO
      * Purpose: save course into DB
      * @param $courseData
      */
-    public function saveCourse($courseData)
+    public function saveData($courseData)
     {
         $insertData = [];
 

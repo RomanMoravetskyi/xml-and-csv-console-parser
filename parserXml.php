@@ -8,7 +8,7 @@
 
 class saxParser
 {
-    const fieldsCount = 4;
+    const FIELDS_COUNTS = 4;
 
     private $tutors   = array();
     private $tutorsCounter = 0;
@@ -65,7 +65,7 @@ class saxParser
                 $this->saveCounter++;
             }
 
-            if(count($this->tutors[$this->tutorsCounter]) == self::fieldsCount) {
+            if(count($this->tutors[$this->tutorsCounter]) == self::FIELDS_COUNTS) {
                 $this->tutorsCounter++;
             }
         }
@@ -73,8 +73,8 @@ class saxParser
 
     private function saveData()
     {
-        $countElementToSave = floor($this->saveCounter/self::fieldsCount); // 4 because count of fields
-        $this->saveCounter -= self::fieldsCount * $countElementToSave;
+        $countElementToSave = floor($this->saveCounter/self::FIELDS_COUNTS); // 4 because count of fields
+        $this->saveCounter -= self::FIELDS_COUNTS * $countElementToSave;
         if($this->saveCounter < 0) {
             throw new RuntimeException('Please check if data is correct in xml file.');
         }
@@ -91,7 +91,7 @@ class saxParser
             unset($this->tutors[$key]);
         }
 
-       $this->dao->saveCourse($data);
+       $this->dao->saveData($data);
     }
 
     public function parsingXml()
@@ -112,7 +112,5 @@ class saxParser
         }
 
         xml_parser_free($parser); // deletes the parser
-
-        return $this->tutors;
     }
 }
